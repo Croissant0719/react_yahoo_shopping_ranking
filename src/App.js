@@ -8,9 +8,17 @@ class App extends Component {
       <div className="App">
         <ul>
           <li><Link to="/all">All Categories</Link></li>
-          <li><Link to="/category/2502">PCs, AVs</Link></li>
-          <li><Link to=""></Link></li>
+          <li><Link to="/category/2502">Computers, Peripherals</Link></li>
+          <li><Link to="/category/100002">Books, Magazines, Comics</Link></li>
         </ul>
+
+        <Route path="/all" component={Ranking} />
+        <Route
+          path="/category/:id"
+          render={
+            ({ match }) => <Ranking categoryId={match.params.id} />
+          }
+        />
       </div>
     );
   }
