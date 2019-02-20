@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class Ranking extends React.Component{
+export default class Ranking extends React.Component {
   componentWillMount() {
     this.props.onMount(this.props.categoryId);
   }
@@ -15,7 +15,7 @@ export default class Ranking extends React.Component{
     return (
       <div>
         <h2>Ranking Component</h2>
-        <p>Category ID: {categoryId}</p>
+        <p>Category ID: {this.props.categoryId}</p>
       </div>
     );
   }
