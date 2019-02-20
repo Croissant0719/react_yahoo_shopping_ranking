@@ -9,7 +9,7 @@ class App extends Component {
       <div className="App">
         <ul>
           <li><Link to="/all">All Categories</Link></li>
-          <li><Link to="/category/2502">Computers, Peripherals</Link></li>
+          <li><Link to="/category/2502">Computers and Peripherals</Link></li>
           <li><Link to="/category/100002">Books, Magazines, Comics</Link></li>
         </ul>
 
