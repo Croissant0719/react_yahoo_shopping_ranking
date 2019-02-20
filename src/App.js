@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import Ranking from './components/Ranking';
+
+import Ranking from './containers/Ranking';
 
 class App extends Component {
   render() {
