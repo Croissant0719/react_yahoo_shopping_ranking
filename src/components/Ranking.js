@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export default class Ranking extends React.Component {
   componentWillMount() {
@@ -26,5 +26,5 @@ Ranking.propTypes = {
   onUpdate: PropTypes.func.isRequired
 };
 Ranking.defaultProps = {
-  categoryId: '1'
+  categoryId: "1"
 };

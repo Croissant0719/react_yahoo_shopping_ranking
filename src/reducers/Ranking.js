@@ -1,14 +1,14 @@
 const getRanking = response => {
   const ranking = [];
-  const itemLength = response.ResultSet.totalResultsReturned
+  const itemLength = response.ResultSet.totalResultsReturned;
   for (let index = 0; index < itemLength; index++) {
-    const item = response.ResultSet['0'].Result[index + ''];
+    const item = response.ResultSet["0"].Result[index + ""];
     ranking.push({
       code: item.Code,
       name: item.Name,
       url: item.Url,
-      imageUrl: item.Image.Medium,
-    })
+      imageUrl: item.Image.Medium
+    });
   }
   return ranking;
 };
@@ -16,30 +16,29 @@ const getRanking = response => {
 const initialState = {
   categoryId: undefined,
   ranking: undefined,
-  error: false,
+  error: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-
     // Reset state on start request
-    case 'START_REQUEST':
+    case "START_REQUEST":
       return {
         categoryId: action.payload.categoryId,
         ranking: undefined,
-        error: false,
+        error: false
       };
 
     // Receive data
-    case 'RECEIVE_DATA':
+    case "RECEIVE_DATA":
       return action.payload.error
-        ? { ...state, error: true}
+        ? { ...state, error: true }
         : {
-          ...state,
-          ranking: getRanking(action.payload.response)
-        };
+            ...state,
+            ranking: getRanking(action.payload.response)
+          };
 
-      default:
-        return state;
+    default:
+      return state;
   }
-}
+};

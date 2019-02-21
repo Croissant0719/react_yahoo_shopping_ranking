@@ -1,21 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function Nav({ categories }) {
-  const to = category => (
-    category.id === '1'
-    ? '/all'
-    : `/category/${category.id}`
-  );
+  const to = category =>
+    category.id === "1" ? "/all" : `/category/${category.id}`;
 
   return (
     <ul>
       {categories.map(category => (
         <li key={`nav-item-${category.id}`}>
-          <Link to={to(category)}>
-            {category.name}
-          </Link>
+          <Link to={to(category)}>{category.name}</Link>
         </li>
       ))}
     </ul>
@@ -25,7 +20,7 @@ Nav.PropTypes = {
   categories: PropTypes.arrayOf(
     PropTypes.shape({
       id: PrppTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
     })
   ).isRequired
 };
