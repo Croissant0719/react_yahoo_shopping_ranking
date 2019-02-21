@@ -19,7 +19,7 @@ export default function Nav({ categories }) {
 Nav.PropTypes = {
   categories: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PrppTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     })
   ).isRequired
