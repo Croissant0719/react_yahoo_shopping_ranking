@@ -8,11 +8,11 @@ export default function Nav({ categories }) {
 
   return (
     <ul>
-      {categories.map(category => (
+      {/* {categories.map(category => (
         <li key={`nav-item-${category.id}`}>
           <Link to={to(category)}>{category.name}</Link>
         </li>
-      ))}
+      ))} */}
     </ul>
   );
 }
