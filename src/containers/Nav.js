@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import Nav from '../components/Nav';
+import { connect } from "react-redux";
+import Nav from "../components/Nav";
 
 const mapStateToProps = state => ({
   categories: state.shopping.categories
