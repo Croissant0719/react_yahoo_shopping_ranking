@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
   error: state.Ranking.error,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   // connect onMount and onUpdate to fetchRanking
   onMount(categoryId) {
     dispatch(actions.fetchRanking(categoryId));
