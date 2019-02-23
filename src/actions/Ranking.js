@@ -33,7 +33,7 @@ export const fetchRanking = categoryId => {
       return;
     }
 
-    dispatch(startRequest(categoryId));
+    dispatch(startRequest(category));
 
     const queryString = qs.stringify({
       appid: APP_ID,

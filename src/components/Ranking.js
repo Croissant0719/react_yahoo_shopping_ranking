@@ -55,7 +55,7 @@ Ranking.propTypes = {
   }),
   ranking: PropTypes.arrayOf(
     PropTypes.shape({
-      cade: PropTypes.string.isRequired,
+      code: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
       imageUrl: PropTypes.string.isRequired,
