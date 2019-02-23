@@ -1,30 +1,38 @@
 import fetchJsonp from "fetch-jsonp";
 import qs from "qs";
+import { replace } from 'react-router-redux';
 
-const API_URL =
-  "https://shopping.yahooapis.jp/ShoppingWebService/V1/json/categoryRanking";
+const API_URL = "https://shopping.yahooapis.jp/ShoppingWebService/V1/json/categoryRanking";
 const APP_ID = "dj00aiZpPUlqOXpPQml2Z1B4OSZzPWNvbnN1bWVyc2VjcmV0Jng9MGU-";
 
 // start request
-const startRequest = categoryId => ({
+const startRequest = category => ({
   type: "START_REQUEST",
-  payload: { categoryId }
+  payload: { category },
 });
 
 // receive data
-const receiveData = (categoryId, error, response) => ({
+const receiveData = (category, error, response) => ({
   type: "RECEIVE_DATA",
-  payload: { categoryId, error, response }
+  payload: { category, error, response },
 });
 
 // finish request
-const finishRequest = categoryId => ({
+const finishRequest = category => ({
   type: "FINISH_REQUEST",
-  payload: { categoryId }
+  payload: { category }
 });
 
 export const fetchRanking = categoryId => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
+    const categories = getState().shopping.categories;
+    const category = categories.find(category => (category.id === categoryId));
+
+    if (typeof category === 'undefined') {
+      dispatch(replace('/'));
+      return;
+    }
+
     dispatch(startRequest(categoryId));
 
     const queryString = qs.stringify({
@@ -35,10 +43,10 @@ export const fetchRanking = categoryId => {
     try {
       const responce = await fetchJsonp(`${API_URL}?$${queryString}`);
       const data = await responce.json();
-      dispatch(receiveData(categoryId, null, data));
+      dispatch(receiveData(category, null, data));
     } catch (err) {
-      dispatch(receiveData(categoryId, err));
+      dispatch(receiveData(category, err));
     }
-    dispatch(finishRequest(categoryId));
+    dispatch(finishRequest(category));
   };
 };
