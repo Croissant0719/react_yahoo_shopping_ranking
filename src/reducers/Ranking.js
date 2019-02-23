@@ -14,7 +14,7 @@ const getRanking = response => {
 };
 
 const initialState = {
-  categoryId: undefined,
+  category: undefined,
   ranking: undefined,
   error: false
 };
@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
     // Reset state on start request
     case "START_REQUEST":
       return {
-        categoryId: action.payload.categoryId,
+        category: action.payload.category,
         ranking: undefined,
         error: false
       };
