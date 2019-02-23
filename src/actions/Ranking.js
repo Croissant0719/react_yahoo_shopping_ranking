@@ -41,7 +41,7 @@ export const fetchRanking = categoryId => {
     });
 
     try {
-      const responce = await fetchJsonp(`${API_URL}?$${queryString}`);
+      const responce = await fetchJsonp(`${API_URL}?${queryString}`);
       const data = await responce.json();
       dispatch(receiveData(category, null, data));
     } catch (err) {
