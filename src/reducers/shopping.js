@@ -1,5 +1,5 @@
 const initialState = {
-  categoried: [
+  categories: [
     {
       id: "1",
       name: "All Categories"
