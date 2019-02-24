@@ -1,19 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
-export default function Nav({ categories }) {
-  const to = category =>
-    category.id === "1" ? "/all" : `/category/${category.id}`;
+export default function Nav({ categories, onClick }) {
+  const to = category => (
+    category.id === "1" ? "/all" : `/category/${category.id}`
+  );
 
   return (
-    <ul>
-      {categories.map(category => (
-        <li key={`nav-item-${category.id}`}>
-          <Link to={to(category)}>{category.name}</Link>
-        </li>
-      ))}
-    </ul>
+    <Drawer variant="permanent">
+      <List style={{ width: 240 }}>
+        {categories.map(category => (
+          <ListItem
+            button
+            key={`menu-item-${category.id}`}
+            onClick={() => onClick(to(category))}>
+            <ListItemText primary={category.name} />
+          </ListItem>
+        ))}
+      </List>
+    </Drawer>
   );
 }
 Nav.propTypes = {
@@ -22,5 +31,7 @@ Nav.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+
+  onClick: PropTypes.func.isRequired
 };
