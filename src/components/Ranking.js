@@ -1,5 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button"
 
 export default class Ranking extends React.Component {
   componentWillMount() {
@@ -28,16 +34,31 @@ export default class Ranking extends React.Component {
           } else if (typeof ranking === 'undefined') {
             return <p>loading...</p>;
           } else {
-            return (
-              <ol>
-                {ranking.map(item => (
-                  <li key={`ranking-item-${item.code}`}>
-                    <img alt={item.name} src={item.imageUrl} />
-                    <a href={item.url} target="_blank">{item.name}</a>
-                  </li>
-                ))}
-              </ol>
-            );
+            return ranking.map((item, i) => (
+              <Card
+                key={`ranking-item-${item.code}`}
+                style={{ maxWidth: "500px", margin: "32px auto" }}>
+                <CardMedia
+                  image={item.imageUrl}
+                  title={`No.${i + 1} ${item.name}`}
+                  style={{ height: "200px" }} />
+                <CardContent>
+                  <Typography type="tytle">
+                    {`No.${i + 1} ${item.name}`}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    // raised
+                    variant="contained"
+                    color="secondary"
+                    fullWidth
+                    href={item.url}>
+                    Go to product page
+                  </Button>
+                </CardActions>
+              </Card>
+            ));
           }
         })()}
       </div>
